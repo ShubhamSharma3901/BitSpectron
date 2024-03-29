@@ -1,8 +1,27 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Roboto_Condensed, Barlow_Condensed } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
+import localFont from "@next/font/local";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["greek"] });
+const roboto = Barlow_Condensed({
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  subsets: ["latin"],
+});
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
+
+const warsaw = localFont({
+  src: [
+    {
+      path: "../public/fonts/WarsawGothicSuExt.otf",
+    },
+  ],
+  variable: "--font-warsaw",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +35,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={warsaw.variable}>{children}</body>
     </html>
   );
 }
