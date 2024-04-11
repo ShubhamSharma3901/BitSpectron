@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Roboto_Condensed, Barlow_Condensed } from "next/font/google";
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import localFont from "@next/font/local";
+import localFont from "next/font/local";
 
 const inter = Inter({ subsets: ["greek"] });
 const roboto = Barlow_Condensed({

@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "@/public/assets/BitSpectronLogo.png";
 import Image from "next/image";
-import { Menu } from "lucide-react";
+import { Dot, Menu } from "lucide-react";
 import { HoverBorderGradient } from "./ui/hover-border-gradient";
 import { WavyBackground } from "./ui/wavy-background";
 
@@ -22,29 +22,37 @@ function HeroMain() {
               alt={""}
               className="smTablet:w-[4.5rem] phone:w-[15%] h-auto"
             />
-            <div className="logo-tagline phone:text-xs smTablet:text-md font-sans flex flex-col font-thin tracking-[0.2rem] uppercase leading-4 justify-center items-start">
+            <div className="logo-tagline phone:text-xs smTablet:text-md font-poppins flex flex-col font-light tracking-[0.2rem] uppercase leading-4 justify-center items-start">
               <p className="logo-line">Dream</p>
               <p className="logo-line">Design</p>
               <p className="logo-line">Deploy</p>
             </div>
           </div>
-          <HoverBorderGradient
-            containerClassName="rounded-full"
-            as="button"
-            className="contact-btn bg-black border phone:hidden smTablet:flex border-white/20 text-white flex items-center space-x-2">
-            <span className="font-sans font-extralight">Get in Touch</span>
-          </HoverBorderGradient>
+          <div className="phone:hidden smTablet:block">
+            <HoverBorderGradient
+              containerClassName="rounded-full"
+              as="button"
+              className="contact-btn bg-black border phone:hidden smTablet:flex border-white/20 text-white flex items-center space-x-2">
+              <span className="font-poppins font-extralight">Get in Touch</span>
+            </HoverBorderGradient>
+          </div>
         </div>
-        <div className="w-full h-[calc(100vh-10rem)] fixed bottom-0 smTablet:pl-10 tablet:pl-16 phone:pl-4 pt-[10rem]">
+        <div className="w-full h-[calc(100vh-10rem)] fixed bottom-0 smTablet:pl-10 smLaptop:pl-16 phone:pl-4 pt-[10rem]">
           <div className="hero-wrapper w-full h-full flex flex-col justify-end smTablet:bottom-10 tablet:bottom-20 phone:bottom-[10rem] relative  items-start smLaptop:text-[15vh] laptop:text-[17vh] xlLaptop:text-[9rem] tracking-wide smTablet:text-[11vh] tablet:text-[11vh] phone:text-[8vh] leading-tight font-black ">
             <div className="hero-line min-h-[7vw] relative flex tablet:gap-6 laptop:gap-8 flex-wrap">
-              <div className="overflow-hidden smLaptop:space-y-[-2rem] relative">
+              <div
+                className="overflow-hidden smLaptop:space-y-[-2rem] relative"
+                data-scroll
+                data-scroll-speed="0.5">
                 <div className="word relative text-white uppercase font-warsaw text-pretty">
-                  out with the old.
+                  Out with the old.
                 </div>
                 <div className="word relative text-white uppercase font-warsaw text-pretty">
                   in with the bold.
                 </div>
+                {/* <div className="flex justify-start items-center relative text-[1.5rem] font-light text-white font-poppins pt-10">
+                  E-Commerce <Dot /> UI/UX <Dot /> Animated Portfolio
+                </div> */}
               </div>
             </div>
           </div>

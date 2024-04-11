@@ -1,20 +1,105 @@
 "use client";
 import Image from "next/image";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import gsap, { CSSPlugin, Expo } from "gsap";
 import { useGSAP } from "@gsap/react";
 import Hero from "@/components/Hero";
 import HeroMain from "@/components/HeroMain";
 import logo from "@/public/assets/BitSpectronLogo.png";
-import { Menu, Shuffle } from "lucide-react";
+import Welcome from "@/components/Welcome";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import OurUSP from "@/components/OurUSP";
+import OurWork from "@/components/OurWork";
+import Marque from "@/components/Marque";
+import WhoWeAre from "@/components/WhoWeAre";
+import { Testimonials } from "@/components/Testimonials";
+import SplitType from "split-type";
+import FAQ from "@/components/FAQ";
+import Pricing from "@/components/Pricing";
+import ContactUs from "@/components/ContactUs";
+import Footer from "@/components/Footer";
+import { BentoGridThirdDemo } from "@/components/BentoGrid";
+import Lenis from "@studio-freight/lenis";
 
-gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 export default function Home() {
   const conatinerMain = useRef<HTMLDivElement>(null);
+
   const { contextSafe } = useGSAP(
     () => {
       const tl = gsap.timeline({
+        //onComplete animation timeline
         onComplete: () => {
+          //Smooth Scrolling
+          (async () => {
+            const LocomotiveScroll = (await import("locomotive-scroll"))
+              .default;
+            const locomotiveScroll = new LocomotiveScroll({
+              smooth: true,
+              smartphone: {
+                smooth: true,
+              },
+            });
+          })();
+          //Who we are pinning animation
+          const tl2 = gsap.to(".who-text-wrapper", {
+            scrollTrigger: {
+              trigger: ".who-text-wrapper",
+              scrub: 2,
+              pin: true,
+              start: "top top",
+              end: () =>
+                `${document.querySelector(".who-text-parent")
+                  ?.scrollHeight!} bottom`,
+              // markers: true,
+            },
+          });
+
+          // const whoText1 = SplitType.create(".who-text-line-1");
+          // const whoText2 = SplitType.create(".who-text-line-2");
+
+          // tl2
+          //   .fromTo(
+          //     whoText1.chars,
+          //     {
+          //       opacity: 0,
+          //       yPercent: 110,
+          //     },
+          //     {
+          //       opacity: 1,
+          //       yPercent: 0,
+          //       stagger: { each: 0.04 },
+          //     }
+          //   )
+          //   .to(whoText1.lines, {
+          //     opacity: 0,
+          //     yPercent: -110,
+          //     stagger: { each: 0.04 },
+          //     delay: 1,
+          //     duration: 4,
+          //   })
+          //   .fromTo(
+          //     whoText2.words,
+          //     {
+          //       opacity: 0,
+          //       yPercent: 110,
+          //     },
+          //     {
+          //       opacity: 1,
+          //       yPercent: 0,
+          //       stagger: { each: 0.04 },
+          //     },
+          //     "+=1"
+          //   )
+          //   .to(whoText2.lines, {
+          //     opacity: 0,
+          //     yPercent: -110,
+          //     stagger: { each: 0.04 },
+          //     delay: 1,
+          //     duration: 4,
+          //   });
+
+          //Work Div Animation
           gsap
             .timeline({ repeat: -1, repeatDelay: 3, yoyo: true })
             .fromTo(
@@ -36,8 +121,98 @@ export default function Home() {
               duration: 0.4,
               ease: "circ.inOut",
             });
+
+          //Card Stack on Scroll Animation Timeline
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: ".card-container",
+              pin: true,
+              start: "top top",
+              end: "bottom bottom",
+              scrub: 1,
+            },
+          });
+          tl.fromTo(
+            ".heading-wrapper",
+            {
+              paddingTop: "2rem",
+              paddingBottom: "2rem",
+            },
+            {
+              paddingTop: "1rem",
+              paddingBottom: "1rem",
+              scrollTrigger: {
+                trigger: ".heading-wrapper",
+                start: "top top",
+                end: "bottom bottom",
+                scrub: 1,
+              },
+            }
+          )
+            .fromTo(
+              ".usp-heading",
+              {
+                fontSize: "min(10vh,9vw)",
+              },
+              {
+                fontSize: "min(8vh,7vw)",
+                scrollTrigger: {
+                  trigger: ".heading-wrapper",
+                  start: "top top",
+                  end: "bottom bottom",
+                  scrub: 1,
+                },
+              }
+            )
+            .fromTo(
+              ".usp-desc",
+              {
+                fontSize: "min(3.2vh,3.2vw)",
+              },
+              {
+                opacity: 0,
+                height: 0,
+                display: "none",
+                ease: "power1.inOut",
+                scrollTrigger: {
+                  trigger: ".heading-wrapper",
+                  start: "top top",
+                  end: "bottom bottom",
+                  scrub: 1,
+                },
+              },
+              "<"
+            )
+            .to(".card", {
+              height: "0",
+              width: "100%",
+              opacity: 0,
+              scale: 0.9,
+              stagger: 0.5,
+              paddingBottom: 0,
+              translateY: 20,
+              ease: "power1.out",
+            });
+
+          // gsap.fromTo(
+          //   [".hor-container", ".hor-div-work"],
+          //   {
+          //     backgroundColor: "black",
+          //   },
+          //   {
+          //     backgroundColor: "white",
+          //     scrollTrigger: {
+          //       trigger: ".hor-container",
+          //       start: "top center",
+          //       end: "10% center",
+          //       scrub: 1,
+          //     },
+          //   }
+          // );
         },
       });
+
+      //Main animation timeline
       tl.to(".loader-element", {
         display: "block",
         opacity: 1,
@@ -79,9 +254,9 @@ export default function Home() {
         .from(
           ".content div .hero-wrapper .hero-line div .word",
           {
-            translateY: 150,
+            translateY: 250,
             stagger: 0.1,
-            duration: 1,
+            duration: 0.6,
             ease: "back.out",
           },
           "<"
@@ -89,6 +264,18 @@ export default function Home() {
         .to(".content div .hero-wrapper .hero-line div .word", {
           translateY: 0,
         })
+        .fromTo(
+          ".scroll-content",
+          {
+            opacity: 0,
+            display: "none",
+          },
+          {
+            opacity: 1,
+            display: "flex",
+          },
+          "-=1"
+        )
         .fromTo(
           ".work-div",
           {
@@ -121,12 +308,12 @@ export default function Home() {
           ".content div .logo .logo-tagline .logo-line",
           {
             opacity: 0,
-            stagger: 0.5,
+            stagger: 0.2,
           },
           {
             opacity: 1,
             display: "inline",
-            stagger: 0.5,
+            stagger: 0.2,
             ease: "back.inOut",
           },
           "-=1"
@@ -138,7 +325,8 @@ export default function Home() {
             display: "none",
             scale: 0,
           },
-          { opacity: 1, display: "flex", scale: 1 }
+          { opacity: 1, display: "flex", scale: 1 },
+          "-=1"
         )
         .fromTo(
           ".menu-btn",
@@ -154,7 +342,7 @@ export default function Home() {
             ease: "elastic.inOut",
             duration: 2,
           },
-          "-=1"
+          "-=2"
         );
     },
     { scope: conatinerMain }
@@ -196,17 +384,19 @@ export default function Home() {
   });
 
   return (
+    //Main Container
     <div
       className="main-container h-screen w-screen relative"
       ref={conatinerMain}>
-      <div className="loader-conatiner text-white relative bg-black h-full w-screen flex justify-center text-center items-center z-[2]">
+      {/* Loader */}
+      <div className="loader-conatiner text-white relative bg-black h-screen w-screen flex justify-center text-center items-center z-[2]">
         <div
-          className="loader-element w-[10%] h-auto"
+          className="loader-element w-fit justify-center items-center h-auto"
           style={{ display: "none", opacity: 0 }}>
           <div className="logo flex gap-6 justify-start w-full">
             <Image src={logo} alt={""} className="w-[4.5rem] h-auto" />
 
-            <div className="logo-tagline text-md font-sans flex flex-col font-thin tracking-[0.2rem] uppercase leading-4 justify-center items-start">
+            <div className="logo-tagline text-md font-sans flex flex-col font-light tracking-[0.2rem] uppercase leading-4 justify-center items-start">
               <p className="logo-line">Dream</p>
               <p className="logo-line">Design</p>
               <p className="logo-line">Deploy</p>
@@ -214,22 +404,24 @@ export default function Home() {
           </div>
         </div>
       </div>
-
+      {/* Hero Section */}
       <div
         className="content-container bg-white h-full flex flex-col justify-center items-center z-[3] translate-y-[-50%] top-[50%] absolute"
         style={{ width: "0" }}>
         <HeroMain />
       </div>
+      {/* Menu Buttons */}
       <div
-        className="menu-btn fixed top-12 phone:right-6 smTablet:right-20 z-[5] px-3 py-6 space-y-2 bg-black rounded-full cursor-pointer"
+        className="menu-btn fixed top-12 phone:right-6 smTablet:right-20 z-[5] px-3 py-6 space-y-2 bg-black/30 rounded-full cursor-pointer"
         onClick={() => {
           onMenuClick();
         }}>
         <div className="menu-icon-1 w-[2.5rem] bg-white rounded-xl h-1"></div>
         <div className="menu-icon-2 w-[2.5rem] bg-white rounded-xl h-1"></div>
       </div>
+      {/* Menu Container */}
       <div
-        className="menu-container fixed top-0 h-full w-full bg-purple-300 z-[10]"
+        className="menu-container fixed top-0 h-full w-full bg-purple-300 z-[100]"
         style={{ opacity: 0, display: "none" }}>
         <div className="w-full h-full flex justify-center items-center">
           Hello
@@ -243,154 +435,34 @@ export default function Home() {
           <div className="menu-close-2 w-[2.5rem] bg-black rounded-xl h-1"></div>
         </div>
       </div>
-      <div className="relative">
-        <Hero />
+      <div className="scroll-content w-full bg-black h-fit relative flex flex-col justify-center items-center">
+        <Welcome />
+        <WhoWeAre />
+        {/* <Hero /> */}
+        <OurUSP />
+        <OurWork />
+        <Marque />
+        <FAQ />
+        <Testimonials />
+        <Pricing />
+        {/* <BentoGridThirdDemo /> */}
+        <ContactUs />
+        <Footer />
       </div>
+      {/* Work With Us */}
       <div
         style={{
           opacity: 0,
           display: "none",
           scale: 0,
         }}
-        className="work-div cursor-pointer rounded-full fixed uppercase font-warsaw text-center tracking-normal text-[2rem] leading-8 px-4 py-12 font-black text-wrap bg-[#3CFFC3] z-[5] phone:bottom-6 tablet:bottom-10 phone:right-6 smLaptop:right-16">
-        Work <br /> With &nbsp; Us ?
+        className="work-div cursor-pointer rounded-full fixed uppercase font-warsaw text-center tracking-normal smTablet:text-[min(2rem,4vw)] phone:text-[1.2rem] smTablet:leading-8 phone:leading-tight  font-black text-wrap bg-[#3CFFC3] z-[10] phone:bottom-6 tablet:bottom-10 phone:right-6 smLaptop:right-16">
+        <div className="relative smLaptop:w-[10rem] smLaptop:h-[10rem] phone:w-[6rem] phone:h-[6rem] smTablet:w-[9rem] smTablet:h-[9rem]">
+          <p className="absolute translate-x-[-50%] translate-y-[-50%] top-[50%] left-[50%] w-full">
+            Work <br /> With &nbsp; Us ?
+          </p>
+        </div>
       </div>
     </div>
   );
-}
-
-{
-  /* <svg
-            id="logo"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 79.12 45.55">
-            <rect
-              id="line1"
-              x="19.37"
-              y="6.78"
-              width="6.78"
-              height="32"
-              stroke-width="0"
-              style={{
-                transformOrigin: "0px 0px",
-                translate: "none",
-                rotate: "none ",
-                scale: "none;",
-                fill: "white",
-              }}
-              data-svg-origin="22.760000944137573 6.78000020980835"
-              transform="matrix(1,0,0,1,0,0)"></rect>
-            <polygon
-              id="angle1"
-              points="7.06 38.78 13.84 38.78 19.37 6.78 12.59 6.78 7.06 38.78"
-              stroke-width="0"
-              style={{
-                translate: "none",
-                rotate: "none",
-                scale: "none",
-                visibility: "visible",
-                transformOrigin: "0px 0px",
-                fill: "white",
-              }}
-              data-svg-origin="13.215000629425049 6.779999732971191"
-              transform="matrix(1,0,0,1,0,0)"></polygon>
-            <rect
-              id="line2"
-              x="32.93"
-              y="6.78"
-              width="6.78"
-              height="32"
-              stroke-width="0"
-              style={{
-                transformOrigin: "0px 0px",
-                translate: "none",
-                rotate: "none ",
-                scale: "none;",
-                fill: "white",
-              }}
-              data-svg-origin="36.320000410079956 6.78000020980835"
-              transform="matrix(1,0,0,1,0,0)"></rect>
-            <polygon
-              id="angle2"
-              points="39.72 38.78 46.5 38.78 52.03 6.78 45.25 6.78 39.72 38.78"
-              stroke-width="0"
-              style={{
-                translate: "none",
-                rotate: "none",
-                scale: "none",
-                visibility: "visible",
-                transformOrigin: "0px 0px",
-                fill: "white",
-              }}
-              data-svg-origin="45.875 38.77999973297119"
-              transform="matrix(1,0,0,1,0.33808,0)"></polygon>
-            <rect
-              id="line3"
-              x="52.03"
-              y="6.78"
-              width="6.78"
-              height="32"
-              stroke-width="0"
-              style={{
-                transformOrigin: "0px 0px",
-                translate: "none",
-                rotate: "none ",
-                scale: "none;",
-                fill: "white",
-              }}
-              data-svg-origin="55.41999888420105 6.78000020980835"
-              transform="matrix(1,0,0,1,0,0)"></rect>
-            <polygon
-              id="angle3"
-              points="64.34 6.78 58.81 38.78 65.59 38.78 71.12 6.78 64.34 6.78"
-              stroke-width="0"
-              style={{
-                translate: "none",
-                rotate: "none",
-                scale: "none",
-                visibility: "visible",
-                transformOrigin: "0px 0px",
-                fill: "white",
-              }}
-              data-svg-origin="64.96500205993652 38.77999973297119"
-              transform="matrix(1,0,0,1,0.33808,0)"></polygon>
-          </svg> */
-}
-{
-  /* <svg
-            id="logo"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 64.06 32">
-            <rect
-              id="line1"
-              x="12.31"
-              width="6.78"
-              height="32"
-              stroke-width="0"
-              style={{ fill: "white" }}></rect>
-            <polygon
-              id="angle1"
-              points="0 32 6.78 32 12.31 0 5.53 0 0 32"
-              stroke-width="0"></polygon>
-            <rect
-              id="line2"
-              x="25.88"
-              width="6.78"
-              height="32"
-              stroke-width="0"></rect>
-            <polygon
-              id="angle2"
-              points="32.66 32 39.44 32 44.97 0 38.19 0 32.66 32"
-              stroke-width="0"></polygon>
-            <rect
-              id="line3"
-              x="44.97"
-              width="6.78"
-              height="32"
-              stroke-width="0"></rect>
-            <polygon
-              id="angle3"
-              points="57.28 0 51.75 32 58.53 32 64.06 0 57.28 0"
-              stroke-width="0"></polygon>
-          </svg> */
 }
