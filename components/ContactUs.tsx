@@ -11,24 +11,11 @@ const ContactUs = () => {
   const serviceRef = useRef<HTMLInputElement>(null);
   const phoneRef = useRef<HTMLInputElement>(null);
   const messageRef = useRef<HTMLTextAreaElement>(null);
-  const [formData, setFormData] = useState<{
-    email: string;
-    service: string;
-    message: string;
-  }>({
-    email: "",
-    service: "",
-    message: "",
-  });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  console.log("recaptcha===", recaptcha.current?.getValue());
   useEffect(() => {
     showConfetti(false);
     setIsSubmitting(false);
-    setFormData({
-      email: "",
-      service: "",
-      message: "",
-    });
   }, []);
   return (
     <div className="w-full h-full">
@@ -62,9 +49,12 @@ const ContactUs = () => {
                   "contact-form"
                 ) as HTMLFormElement;
 
+                setIsSubmitting(true);
+
                 const captchaValue = recaptcha?.current?.getValue();
                 if (!captchaValue) {
                   alert("Please verify the reCAPTCHA!");
+                  setIsSubmitting(false);
                 } else {
                   const res = await fetch("/api/verify", {
                     method: "POST",
@@ -97,13 +87,16 @@ const ContactUs = () => {
                         "Thank you for reaching out. We'll get back to you shortly"
                       );
                       showConfetti(true);
+                      setIsSubmitting(false);
                     } else {
                       toast.error(
                         "Something went wrong. Please try again later"
                       );
+                      setIsSubmitting(false);
                     }
                   } else {
                     alert("reCAPTCHA validation failed!");
+                    setIsSubmitting(false);
                   }
                 }
               }}
@@ -172,7 +165,6 @@ const ContactUs = () => {
               <button
                 type="submit"
                 onClick={() => {
-                  setIsSubmitting(true);
                   showConfetti(false);
                 }}
                 className="p-4 w-full flex justify-center items-center text-sm font-medium text-center text-black bg-cyan-300 transition outline rounded-[0.75rem] ">
