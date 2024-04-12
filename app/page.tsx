@@ -20,6 +20,7 @@ import ContactUs from "@/components/ContactUs";
 import Footer from "@/components/Footer";
 import { BentoGridThirdDemo } from "@/components/BentoGrid";
 import Lenis from "@studio-freight/lenis";
+import Link from "next/link";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 export default function Home() {
@@ -457,11 +458,13 @@ export default function Home() {
           scale: 0,
         }}
         className="work-div cursor-pointer rounded-full fixed uppercase font-warsaw text-center tracking-normal smTablet:text-[min(2rem,4vw)] phone:text-[1.2rem] smTablet:leading-8 phone:leading-tight  font-black text-wrap bg-[#3CFFC3] z-[10] phone:bottom-6 tablet:bottom-10 phone:right-6 smLaptop:right-16">
-        <div className="relative smLaptop:w-[10rem] smLaptop:h-[10rem] phone:w-[6rem] phone:h-[6rem] smTablet:w-[9rem] smTablet:h-[9rem]">
-          <p className="absolute translate-x-[-50%] translate-y-[-50%] top-[50%] left-[50%] w-full">
-            Work <br /> With &nbsp; Us ?
-          </p>
-        </div>
+        <Link href={"#contact-form-div"}>
+          <div className="relative smLaptop:w-[10rem] smLaptop:h-[10rem] phone:w-[6rem] phone:h-[6rem] smTablet:w-[9rem] smTablet:h-[9rem]">
+            <p className="absolute translate-x-[-50%] translate-y-[-50%] top-[50%] left-[50%] w-full">
+              Work <br /> With &nbsp; Us ?
+            </p>
+          </div>
+        </Link>
       </div>
     </div>
   );

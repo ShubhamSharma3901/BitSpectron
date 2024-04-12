@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Dot, Menu } from "lucide-react";
 import { HoverBorderGradient } from "./ui/hover-border-gradient";
 import { WavyBackground } from "./ui/wavy-background";
+import Link from "next/link";
 
 function HeroMain() {
   return (
@@ -28,13 +29,18 @@ function HeroMain() {
               <p className="logo-line">Deploy</p>
             </div>
           </div>
+
           <div className="phone:hidden smTablet:block">
-            <HoverBorderGradient
-              containerClassName="rounded-full"
-              as="button"
-              className="contact-btn bg-black border phone:hidden smTablet:flex border-white/20 text-white flex items-center space-x-2">
-              <span className="font-poppins font-extralight">Get in Touch</span>
-            </HoverBorderGradient>
+            <Link href="#contact-form-div">
+              <HoverBorderGradient
+                containerClassName="rounded-full"
+                as="button"
+                className="contact-btn bg-black border phone:hidden smTablet:flex border-white/20 text-white flex items-center space-x-2">
+                <span className="font-poppins font-extralight">
+                  Get in Touch
+                </span>
+              </HoverBorderGradient>
+            </Link>
           </div>
         </div>
         <div className="w-full h-[calc(100vh-10rem)] fixed bottom-0 smTablet:pl-10 smLaptop:pl-16 phone:pl-4 pt-[10rem]">

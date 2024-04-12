@@ -21,7 +21,8 @@ function OurWork() {
       const text = new SplitType(".anim-work");
 
       function getScroll() {
-        console.log(-100 * (horDiv.length + 0.11));
+        console.log(window.innerWidth);
+        if (window.innerWidth >= 1010) return -100 * (horDiv.length + 0.4);
         return -100 * (horDiv.length + 0.2);
       }
 
@@ -55,6 +56,7 @@ function OurWork() {
           start: "top center",
           end: "bottom center",
           scrub: 1,
+          // markers: true,
         },
       }).fromTo(
         ".anim-work",

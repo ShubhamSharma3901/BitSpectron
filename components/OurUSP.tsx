@@ -93,12 +93,13 @@ function OurUSP() {
                   <div className="flex justify-center items-center w-full">
                     <div className="">
                       <p className="text-md phone:mb-20 smTablet:mb-0 text-justify font-poppins text-black smLaptop:w-[65%] smTablet:w-[80%] phone:w-full ">
-                        We specialize in bringing your dream website to life,
-                        offering expertise in design, development, and
-                        optimization. We understand your vision and translate it
-                        into a visually stunning, user-friendly interface. We
-                        embody your brand identity, captivate your audience, and
-                        drive results, making your dream website a reality.
+                        We offer stunning UI designs using cutting-edge tools
+                        and technology. Collaboratively, we grasp the essence of
+                        your brand, integrating engaging animations along with
+                        industry standard UI and UX principles for enhanced user
+                        experience. With creativity and technical know-how, we
+                        deliver captivating websites, ensuring your online
+                        presence shines in a competitive digital world.
                       </p>
                     </div>
                   </div>

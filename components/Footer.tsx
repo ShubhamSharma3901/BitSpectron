@@ -1,16 +1,23 @@
 import React from "react";
 import logo from "@/public/assets/BitSpectronLogo.png";
 import Image from "next/image";
+import { BsInstagram } from "react-icons/bs";
+import { BiLogoLinkedinSquare } from "react-icons/bi";
+import { CgMail } from "react-icons/cg";
+import { BsLinkedin } from "react-icons/bs";
+import { SiGmail } from "react-icons/si";
 
 const Footer = () => {
   return (
     <div className="w-full relative z-[100] ">
       <div className="h-[0.3rem] bg-cyan-300"></div>
-      <footer className="bg-black text-white dark:bg-gray-900">
+      <footer className="bg-black text-white dark:bg-gray-900 font-poppins">
         <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
           <div className="md:flex md:justify-between">
             <div className="mb-6 md:mb-0">
-              <a href="https://flowbite.com/" className="flex items-center">
+              <a
+                href="https://bitspectron.com/"
+                className="flex items-center phone:py-4 smTablet:py-0">
                 {/* <Image src={logo} className="h-8 me-3" alt="FlowBite Logo" /> */}
                 <Image
                   src={logo}
@@ -24,41 +31,43 @@ const Footer = () => {
             </div>
             <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
               <div>
-                <h2 className="mb-6 text-sm font-semibolduppercase dark:text-white">
-                  Resources
+                <h2 className="mb-6 text-sm font-semibold uppercase dark:text-white">
+                  NAVIGATION
                 </h2>
                 <ul className="text-gray-500 dark:text-gray-400 font-medium">
                   <li className="mb-4">
-                    <a href="https://flowbite.com/" className="hover:underline">
-                      Flowbite
+                    <a
+                      href="https://bitspectron.com/"
+                      className="hover:underline">
+                      HOME
                     </a>
                   </li>
                   <li>
                     <a
-                      href="https://tailwindcss.com/"
+                      href="https://bitspectron.com/about"
                       className="hover:underline">
-                      Tailwind CSS
+                      ABOUT
                     </a>
                   </li>
                 </ul>
               </div>
               <div>
                 <h2 className="mb-6 text-sm font-semibold  uppercase dark:text-white">
-                  Follow us
+                  CONTACT
                 </h2>
                 <ul className="text-gray-500 dark:text-gray-400 font-medium">
                   <li className="mb-4">
                     <a
-                      href="https://github.com/themesberg/flowbite"
+                      href="https://bitspectron.com/contact"
                       className="hover:underline ">
-                      Github
+                      CONTACT
                     </a>
                   </li>
                   <li>
                     <a
-                      href="https://discord.gg/4eeurUVvTy"
+                      href="https://bitspectron.com/testimonials"
                       className="hover:underline">
-                      Discord
+                      TESTIMONIALS
                     </a>
                   </li>
                 </ul>
@@ -70,28 +79,29 @@ const Footer = () => {
                 <ul className="text-gray-500 dark:text-gray-400 font-medium">
                   <li className="mb-4">
                     <a href="#" className="hover:underline">
-                      Privacy Policy
+                      PRIVACY POLICY
                     </a>
                   </li>
                   <li>
                     <a href="#" className="hover:underline">
-                      Terms &amp; Conditions
+                      TERMS &amp; CONDITIONS
                     </a>
                   </li>
                 </ul>
               </div>
             </div>
           </div>
-          <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+          <hr className="my-6 border-gray-200 sm:mx-auto lg:my-8" />
           <div className="sm:flex sm:items-center sm:justify-between">
-            <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
+            <span className="text-sm  text-gray-500 sm:text-center dark:text-gray-400 font-poppins">
               © 2024{" "}
-              <a href="https://flowbite.com/" className="hover:underline">
+              <a href="https://bitspectron.com/" className="hover:underline">
                 BitSpectron™
               </a>
               . All Rights Reserved.
             </span>
-            <div className="flex mt-4 sm:justify-center sm:mt-0">
+
+            {/* <div className="flex mt-4 sm:justify-center sm:mt-0">
               <a
                 href="#"
                 className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
@@ -173,6 +183,26 @@ const Footer = () => {
                 </svg>
                 <span className="sr-only">Dribbble account</span>
               </a>
+            </div> */}
+
+            <div className="pt-4">
+              <div className="flex gap-5 p-2 ">
+                <BsInstagram
+                  className="h-auto w-[1.2rem] cursor-pointer hover:scale-110 transition"
+                  // smTablet-size="1.75rem"
+                  // Phone-size="1.75rem"
+                />
+                <BsLinkedin
+                  className="h-auto w-[1.2rem] cursor-pointer hover:scale-110 transition"
+                  // smTablet-size="1.75rem"
+                  // Phone-size="1.75rem"
+                />
+                <SiGmail
+                  className="h-auto w-[1.2rem] cursor-pointer hover:scale-110 transition"
+                  // smTablet-size="1.75rem"
+                  // Phone-size="1.75rem"
+                />
+              </div>
             </div>
           </div>
         </div>

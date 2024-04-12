@@ -4,6 +4,7 @@ import React, { useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { HoverBorderGradient } from "./ui/hover-border-gradient";
 import SplitType from "split-type";
+import Link from "next/link";
 
 function Welcome() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -85,12 +86,14 @@ function Welcome() {
           </span>
         </div>
         <div className="text-center w-full flex justify-center items-center font-sans font-extralight tracking-widest text-xl">
-          <HoverBorderGradient
-            containerClassName="rounded-full"
-            as="button"
-            className="contact-btn bg-black border phone:hidden smTablet:flex border-white/20 text-white flex items-center space-x-2">
-            <span className="font-poppins font-extralight">Get in Touch</span>
-          </HoverBorderGradient>
+          <Link href="#contact-form-div">
+            <HoverBorderGradient
+              containerClassName="rounded-full"
+              as="button"
+              className="contact-btn bg-black border phone:hidden smTablet:flex border-white/20 text-white flex items-center space-x-2">
+              <span className="font-poppins font-extralight">Get in Touch</span>
+            </HoverBorderGradient>
+          </Link>
         </div>
       </div>
     </div>
