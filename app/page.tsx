@@ -21,10 +21,13 @@ import Footer from "@/components/Footer";
 import { BentoGridThirdDemo } from "@/components/BentoGrid";
 import Lenis from "@studio-freight/lenis";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 export default function Home() {
   const conatinerMain = useRef<HTMLDivElement>(null);
+
+  const router = useRouter();
 
   const { contextSafe } = useGSAP(
     () => {
@@ -55,50 +58,6 @@ export default function Home() {
               // markers: true,
             },
           });
-
-          // const whoText1 = SplitType.create(".who-text-line-1");
-          // const whoText2 = SplitType.create(".who-text-line-2");
-
-          // tl2
-          //   .fromTo(
-          //     whoText1.chars,
-          //     {
-          //       opacity: 0,
-          //       yPercent: 110,
-          //     },
-          //     {
-          //       opacity: 1,
-          //       yPercent: 0,
-          //       stagger: { each: 0.04 },
-          //     }
-          //   )
-          //   .to(whoText1.lines, {
-          //     opacity: 0,
-          //     yPercent: -110,
-          //     stagger: { each: 0.04 },
-          //     delay: 1,
-          //     duration: 4,
-          //   })
-          //   .fromTo(
-          //     whoText2.words,
-          //     {
-          //       opacity: 0,
-          //       yPercent: 110,
-          //     },
-          //     {
-          //       opacity: 1,
-          //       yPercent: 0,
-          //       stagger: { each: 0.04 },
-          //     },
-          //     "+=1"
-          //   )
-          //   .to(whoText2.lines, {
-          //     opacity: 0,
-          //     yPercent: -110,
-          //     stagger: { each: 0.04 },
-          //     delay: 1,
-          //     duration: 4,
-          //   });
 
           //Work Div Animation
           gsap
@@ -350,7 +309,42 @@ export default function Home() {
   );
 
   const onMenuClick = contextSafe(() => {
-    const tl = gsap.timeline();
+    const tl = gsap.timeline({
+      onComplete: () => {
+        //Menu Items animation
+
+        const menuItemsArray = gsap.utils.toArray(".menu-item");
+
+        gsap
+          .timeline({
+            onStart: () => {},
+          })
+          .fromTo(
+            menuItemsArray,
+            {
+              opacity: 0,
+            },
+            {
+              y: 0,
+              opacity: 1,
+            }
+          )
+          .fromTo(
+            SplitType.create(".menu-text").chars,
+            {
+              y: 100,
+              opacity: 0,
+            },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.5,
+              stagger: { each: 0.03 },
+            },
+            "<"
+          );
+      },
+    });
 
     tl.to([".menu-icon-1", ".menu-close-1"], {
       rotation: 45,
@@ -368,6 +362,7 @@ export default function Home() {
   });
 
   const onMenuClose = contextSafe(() => {
+    const menuItemsArray = gsap.utils.toArray(".menu-item");
     const tl = gsap.timeline();
     tl.to([".menu-icon-1", ".menu-close-1"], {
       rotation: 0,
@@ -381,7 +376,31 @@ export default function Home() {
         },
         "<"
       )
-      .to(".menu-container", { opacity: 0, display: "none" });
+      .fromTo(
+        menuItemsArray,
+        {
+          opacity: 1,
+        },
+        {
+          y: 0,
+          opacity: 0,
+        }
+      )
+      .fromTo(
+        SplitType.create(".menu-text").chars,
+        {
+          y: 0,
+          opacity: 1,
+        },
+        {
+          y: -100,
+          opacity: 0,
+
+          stagger: { each: 0.03 },
+        },
+        "<"
+      )
+      .to(".menu-container", { opacity: 0, display: "none" }, "-=0.2");
   });
 
   return (
@@ -422,18 +441,65 @@ export default function Home() {
       </div>
       {/* Menu Container */}
       <div
-        className="menu-container fixed top-0 h-full w-full bg-purple-300 z-[100]"
+        id={"menu-container"}
+        className="menu-container fixed top-0 h-full w-full bg-transparent backdrop-blur-xl text-white z-[100]"
         style={{ opacity: 0, display: "none" }}>
-        <div className="w-full h-full flex justify-center items-center">
-          Hello
+        <div className="menu-wrapper w-full h-full flex justify-center items-center">
+          <div className="menu-content text-center flex flex-col font-warsaw justify-items-center text-[min(10vh,10vw)]">
+            <Link
+              href={"#home"}
+              onClick={() => {
+                onMenuClose();
+              }}
+              className="menu-item  relative overflow-hidden "
+              style={{
+                opacity: 0,
+              }}>
+              <span className="menu-text">Home</span>
+            </Link>
+            <Link
+              href={"#who-we-are"}
+              onClick={() => {
+                onMenuClose();
+              }}
+              className="menu-item  relative overflow-hidden"
+              style={{
+                opacity: 0,
+              }}>
+              <span className="menu-text">About</span>
+            </Link>
+            <Link
+              href={"#contact-form-div"}
+              onClick={() => {
+                onMenuClose();
+              }}
+              className="menu-item  relative overflow-hidden"
+              style={{
+                opacity: 0,
+              }}>
+              <span className="menu-text">Contact</span>
+            </Link>
+            <Link
+              href={"#our-work"}
+              onClick={() => {
+                onMenuClose();
+              }}
+              className="menu-item  relative overflow-hidden"
+              style={{
+                opacity: 0,
+              }}>
+              <span className="menu-text">Work</span>
+            </Link>
+          </div>
         </div>
+        {/* Menu Close Button */}
         <div
           className="fixed top-12 phone:right-6 smTablet:right-20 z-[5] px-3 py-6 space-y-2 cursor-pointer"
           onClick={() => {
             onMenuClose();
           }}>
-          <div className="menu-close-1 w-[2.5rem] bg-black rounded-xl h-1"></div>
-          <div className="menu-close-2 w-[2.5rem] bg-black rounded-xl h-1"></div>
+          <div className="menu-close-1 w-[2.5rem] bg-white rounded-xl h-1"></div>
+          <div className="menu-close-2 w-[2.5rem] bg-white rounded-xl h-1"></div>
         </div>
       </div>
       <div className="scroll-content w-full bg-black h-fit relative flex flex-col justify-center items-center">
@@ -443,9 +509,9 @@ export default function Home() {
         <OurUSP />
         <OurWork />
         <Marque />
-        <FAQ />
         <Testimonials />
         <Pricing />
+        <FAQ />
         {/* <BentoGridThirdDemo /> */}
         <ContactUs />
         <Footer />

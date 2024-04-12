@@ -4,10 +4,12 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import React, { useRef } from "react";
 import Welcome from "./Welcome";
 import { ArrowUpRight } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 function OurUSP() {
+  const router = useRouter();
   return (
     <>
       <div className="card-container  text-white w-screen flex flex-col justify-center items-center h-full relative">
@@ -30,7 +32,11 @@ function OurUSP() {
                 style={{ fontSize: "min(16vh,15vw)" }}>
                 Dream.
               </p>
-              <div className="flex justify-center items-center smTablet:pt-10 phone:pt-2">
+              <div
+                onClick={() => {
+                  router.push("/dream");
+                }}
+                className="flex justify-center items-center smTablet:pt-10 phone:pt-2">
                 <button className="border hover:bg-black hover:text-[#e0c9ee] transition text-black border-black rounded-full font-poppins smTablet:p-4 smLaptop:p-6 phone:p-4 smLaptop:text-3xl phone:text-md  flex justify-center items-center">
                   Tell Me More{" "}
                   <ArrowUpRight className="ml-2 h-auto smLaptop:w-10 smTablet:w-8 phone:w-6" />
@@ -76,8 +82,12 @@ function OurUSP() {
                 style={{ fontSize: "min(16vh,15vw)" }}>
                 Design.
               </p>
-              <div className="flex justify-center items-center smTablet:pt-10 phone:pt-2">
-                <button className="border hover:bg-black hover:text-[#e0c9ee] transition text-black border-black rounded-full font-poppins smTablet:p-4 smLaptop:p-6 phone:p-4 smLaptop:text-3xl phone:text-md  flex justify-center items-center">
+              <div
+                onClick={() => {
+                  router.push("/design");
+                }}
+                className="flex justify-center items-center smTablet:pt-10 phone:pt-2">
+                <button className="border hover:bg-black hover:text-[#A8F0D1] transition text-black border-black rounded-full font-poppins smTablet:p-4 smLaptop:p-6 phone:p-4 smLaptop:text-3xl phone:text-md  flex justify-center items-center">
                   Tell Me More{" "}
                   <ArrowUpRight className="ml-2 h-auto smLaptop:w-10 smTablet:w-8 phone:w-6" />
                 </button>
@@ -129,8 +139,12 @@ function OurUSP() {
                 style={{ fontSize: "min(16vh,15vw)" }}>
                 Develop.
               </p>
-              <div className="flex justify-center items-center smTablet:pt-10 phone:pt-2">
-                <button className="border hover:bg-black hover:text-[#e0c9ee] transition text-black border-black rounded-full font-poppins smTablet:p-4 smLaptop:p-6 phone:p-4 smLaptop:text-3xl phone:text-md  flex justify-center items-center">
+              <div
+                onClick={() => {
+                  router.push("/develop");
+                }}
+                className="flex justify-center items-center smTablet:pt-10 phone:pt-2">
+                <button className="border hover:bg-black hover:text-[#ACE7FF] transition text-black border-black rounded-full font-poppins smTablet:p-4 smLaptop:p-6 phone:p-4 smLaptop:text-3xl phone:text-md  flex justify-center items-center">
                   Tell Me More{" "}
                   <ArrowUpRight className="ml-2 h-auto smLaptop:w-10 smTablet:w-8 phone:w-6" />
                 </button>
@@ -145,12 +159,12 @@ function OurUSP() {
                   <div className="flex justify-center items-center w-full">
                     <div className="">
                       <p className="text-md phone:mb-20 smTablet:mb-0 text-justify font-poppins text-black smLaptop:w-[65%] smTablet:w-[80%] phone:w-full ">
-                        We specialize in bringing your dream website to life,
-                        offering expertise in design, development, and
-                        optimization. We understand your vision and translate it
-                        into a visually stunning, user-friendly interface. We
-                        embody your brand identity, captivate your audience, and
-                        drive results, making your dream website a reality.
+                        We utilize cutting-edge design, tech and animations to
+                        craft standout websites. Our focus is on modern design,
+                        functionality, and user experience. With meticulous
+                        attention to detail, we ensure stunning visuals and
+                        seamless navigation, establishing a strong online
+                        presence for your clients.
                       </p>
                     </div>
                   </div>
@@ -180,8 +194,12 @@ function OurUSP() {
                 style={{ fontSize: "min(16vh,15vw)" }}>
                 Deploy.
               </p>
-              <div className="flex justify-center items-center smTablet:pt-10 phone:pt-2">
-                <button className="border hover:bg-black hover:text-[#e0c9ee] transition text-black border-black rounded-full font-poppins smTablet:p-4 smLaptop:p-6 phone:p-4 smLaptop:text-3xl phone:text-md  flex justify-center items-center">
+              <div
+                onClick={() => {
+                  router.push("/deploy");
+                }}
+                className="flex justify-center items-center smTablet:pt-10 phone:pt-2">
+                <button className="border hover:bg-black hover:text-[#edbdca] transition text-black border-black rounded-full font-poppins smTablet:p-4 smLaptop:p-6 phone:p-4 smLaptop:text-3xl phone:text-md  flex justify-center items-center">
                   Tell Me More{" "}
                   <ArrowUpRight className="ml-2 h-auto smLaptop:w-10 smTablet:w-8 phone:w-6" />
                 </button>
@@ -191,17 +209,18 @@ function OurUSP() {
               <div className="w-[100%] space-y-6 flex phone:flex-col smTablet:flex-row phone:pt-8 smLaptop:pt-0">
                 <div className="flex flex-col justify-start items-start w-[60%] phone:gap-8 smTablet:gap-10 smTablet:w-[60%] phone:w-full ">
                   <p className="smTablet:text-[min(5vh,5vw)] phone:text-2xl text-black font-warsaw">
-                    From &nbsp;&nbsp; Dream &nbsp;&nbsp;to&nbsp;&nbsp; Screen
+                    Efficient,&nbsp;&nbsp; Seamless,&nbsp;&nbsp; Deployed!
                   </p>
                   <div className="flex justify-center items-center w-full">
                     <div className="">
                       <p className="text-md phone:mb-20 smTablet:mb-0 text-justify font-poppins text-black smLaptop:w-[65%] smTablet:w-[80%] phone:w-full ">
-                        We specialize in bringing your dream website to life,
-                        offering expertise in design, development, and
-                        optimization. We understand your vision and translate it
-                        into a visually stunning, user-friendly interface. We
-                        embody your brand identity, captivate your audience, and
-                        drive results, making your dream website a reality.
+                        We streamline deployment using AWS Amplify or Vercel.
+                        With AWS Amplify, we automate workflows for scalable and
+                        reliable serverless web applications. Alternatively, we
+                        can use Vercel, which ensures lightning-fast performance
+                        and effortless scaling. Integrating these solutions
+                        streamlines the process, delivering polished,
+                        high-performing websites efficiently.
                       </p>
                     </div>
                   </div>
@@ -231,8 +250,12 @@ function OurUSP() {
                 style={{ fontSize: "min(16vh,15vw)" }}>
                 Grow.
               </p>
-              <div className="flex justify-center items-center smTablet:pt-10 phone:pt-2">
-                <button className="border hover:bg-black hover:text-[#e0c9ee] transition text-black border-black rounded-full font-poppins smTablet:p-4 smLaptop:p-6 phone:p-4 smLaptop:text-3xl phone:text-md  flex justify-center items-center">
+              <div
+                onClick={() => {
+                  router.push("/grow");
+                }}
+                className="flex justify-center items-center smTablet:pt-10 phone:pt-2">
+                <button className="border hover:bg-black hover:text-indigo-200 transition text-black border-black rounded-full font-poppins smTablet:p-4 smLaptop:p-6 phone:p-4 smLaptop:text-3xl phone:text-md  flex justify-center items-center">
                   Tell Me More{" "}
                   <ArrowUpRight className="ml-2 h-auto smLaptop:w-10 smTablet:w-8 phone:w-6" />
                 </button>
@@ -247,12 +270,14 @@ function OurUSP() {
                   <div className="flex justify-center items-center w-full">
                     <div className="">
                       <p className="text-md phone:mb-20 smTablet:mb-0 text-justify font-poppins text-black smLaptop:w-[65%] smTablet:w-[80%] phone:w-full ">
-                        We specialize in bringing your dream website to life,
-                        offering expertise in design, development, and
-                        optimization. We understand your vision and translate it
-                        into a visually stunning, user-friendly interface. We
-                        embody your brand identity, captivate your audience, and
-                        drive results, making your dream website a reality.
+                        We drive business growth with compelling online presence
+                        and developing websites that actually converts. Our
+                        visually stunning designs attract and retain visitors,
+                        fostering interactive engagement. This enhances brand
+                        visibility, credibility, and customer acquisition. Our
+                        technical expertise empower clients to stand out in the
+                        digital landscape, driving traffic, conversions, and
+                        long-term success.
                       </p>
                     </div>
                   </div>

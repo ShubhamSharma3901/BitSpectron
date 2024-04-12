@@ -9,7 +9,7 @@ import { SiGmail } from "react-icons/si";
 
 const Footer = () => {
   return (
-    <div className="w-full relative z-[100] ">
+    <div className="w-full relative z-[100] mt-20">
       <div className="h-[0.3rem] bg-cyan-300"></div>
       <footer className="bg-black text-white dark:bg-gray-900 font-poppins">
         <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
@@ -36,16 +36,12 @@ const Footer = () => {
                 </h2>
                 <ul className="text-gray-500 dark:text-gray-400 font-medium">
                   <li className="mb-4">
-                    <a
-                      href="https://bitspectron.com/"
-                      className="hover:underline">
+                    <a href="#home" className="hover:underline">
                       HOME
                     </a>
                   </li>
                   <li>
-                    <a
-                      href="https://bitspectron.com/about"
-                      className="hover:underline">
+                    <a href="#who-we-are" className="hover:underline">
                       ABOUT
                     </a>
                   </li>
@@ -57,16 +53,12 @@ const Footer = () => {
                 </h2>
                 <ul className="text-gray-500 dark:text-gray-400 font-medium">
                   <li className="mb-4">
-                    <a
-                      href="https://bitspectron.com/contact"
-                      className="hover:underline ">
+                    <a href="#contact-form-div" className="hover:underline ">
                       CONTACT
                     </a>
                   </li>
                   <li>
-                    <a
-                      href="https://bitspectron.com/testimonials"
-                      className="hover:underline">
+                    <a href="#testimonials" className="hover:underline">
                       TESTIMONIALS
                     </a>
                   </li>
@@ -78,12 +70,12 @@ const Footer = () => {
                 </h2>
                 <ul className="text-gray-500 dark:text-gray-400 font-medium">
                   <li className="mb-4">
-                    <a href="#" className="hover:underline">
+                    <a href="/privacy" className="hover:underline">
                       PRIVACY POLICY
                     </a>
                   </li>
                   <li>
-                    <a href="#" className="hover:underline">
+                    <a href="/terms" className="hover:underline">
                       TERMS &amp; CONDITIONS
                     </a>
                   </li>

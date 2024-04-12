@@ -10,6 +10,7 @@ function HeroMain() {
   return (
     <>
       <div
+        id={"home"}
         className="content h-full w-full bg-black relative overflow-clip"
         style={{ display: "none", opacity: 0 }}>
         <WavyBackground className="z-[-1] waves"></WavyBackground>

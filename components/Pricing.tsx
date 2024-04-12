@@ -1,13 +1,24 @@
 import { CheckCircle2Icon, IndianRupee } from "lucide-react";
 import React from "react";
 import { HoverBorderGradient } from "./ui/hover-border-gradient";
+import Link from "next/link";
 
 function Pricing() {
   return (
     <div className="text-white h-fit w-screen relative flex flex-col justify-center items-center mb-10 mt-0 py-[10vh] gap-20">
       <div className="smLaptop:h-[27rem] smLaptop:w-[27rem] smTablet:w-[18rem] smTablet:h-[18rem] rounded-[95%] bg-cyan-600 absolute blur-[300px] translate-x-[-50%] translate-y-[-50%] left-[50%] top-[50%]"></div>
-      <div className="font-warsaw phone:text-[min(12vh,12vw)] smTablet:text-[5rem] h-[30%] flex justify-center items-center">
-        Pricing
+      <div className="font-warsaw phone:text-[min(12vh,12vw)] smTablet:text-[5rem] h-[30%] flex  flex-col justify-center items-center">
+        <div className="flex flex-col justify-center items-center text-center">
+          <p> Pricing</p>
+          <p className="w-full phone:text-[min(3.2vh,3.5vw)] smTablet:text-[min(2.3vh,2.3vw)] smLaptop:text-[min(2.7vh,3.2vw)] font-poppins">
+            Unlocking simplicity, transparency, and trust - because honesty
+            shouldn&apos;t be an add-on.
+            <br />
+            <span className="text-cyan-200">
+              Know what you pay, own your choices.
+            </span>
+          </p>
+        </div>
       </div>
       <div className="grid smLaptop:grid-cols-3 phone:grid-cols-1 smTablet:grid-cols-2 w-full gap-10 h-[60%] phone:px-2 smTablet:px-10 relative z-[10]">
         <div className="h-full bg-gradient-to-b from-neutral-500 to-neutral-900 w-full rounded-xl relative">
@@ -59,9 +70,13 @@ function Pricing() {
                 </ul>
               </div>
             </div>
-            <div className="font-poppins w-full">
-              <button className="border w-full p-3 rounded-xl">Buy Now</button>
-            </div>
+            <Link href="#contact-form-div" className="w-full">
+              <div className="font-poppins w-full">
+                <button className="border w-full p-3 rounded-xl">
+                  Buy Now
+                </button>
+              </div>
+            </Link>
           </div>
         </div>
         <div className="h-full bg-gradient-to-b from-neutral-500 to-neutral-900 w-full rounded-xl relative">
@@ -118,9 +133,13 @@ function Pricing() {
                 </ul>
               </div>
             </div>
-            <div className="font-poppins w-full">
-              <button className="border w-full p-3 rounded-xl">Buy Now</button>
-            </div>
+            <Link href="#contact-form-div" className="w-full">
+              <div className="font-poppins w-full">
+                <button className="border w-full p-3 rounded-xl">
+                  Buy Now
+                </button>
+              </div>
+            </Link>
           </div>
         </div>
         {/* <div className="h-full bg-gradient-to-br from-neutral-800 to-neutral-900 w-full rounded-xl  backdrop-blur-2xl">
@@ -181,12 +200,30 @@ function Pricing() {
                 </ul>
               </div>
             </div>
-            <div className="font-poppins w-full">
-              <button className=" w-full p-3 rounded-xl bg-green-200 text-black font-semibold">
-                Buy Now
-              </button>
-            </div>
+            <Link href="#contact-form-div" className="w-full">
+              <div className="font-poppins w-full">
+                <button className=" w-full p-3 rounded-xl bg-green-200 text-black font-semibold">
+                  Buy Now
+                </button>
+              </div>
+            </Link>
           </div>
+        </div>
+      </div>
+      <div className="font-warsaw phone:text-[min(12vh,12vw)] smTablet:text-[5rem] h-[30%] flex  flex-col justify-center items-center">
+        <div className="flex flex-col justify-center items-center text-center">
+          <p className="w-full phone:text-[min(3.2vh,3.5vw)] font-semibold smTablet:text-[min(2.3vh,2.3vw)] smLaptop:text-[min(2.7vh,3.2vw)] font-poppins">
+            Got better offer somewhere else?{" "}
+            <span className="text-white/80 font-light">
+              Let&apos;s chat and tailor a solution that fits your budget and
+              needs perfectly.
+            </span>
+            <br />
+            <span className="text-cyan-200 font-medium">
+              Reach out to us today!
+            </span>
+            <br />
+          </p>
         </div>
       </div>
     </div>

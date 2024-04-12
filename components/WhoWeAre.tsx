@@ -68,6 +68,7 @@ function WhoWeAre() {
   return (
     <div
       ref={containerRef}
+      id={"who-we-are"}
       className="who-text-container h-[200vh] flex justify-start items-start relative ">
       <div className="who-text-parent h-full w-full flex justify-start items-start relative">
         <div className="who-text-wrapper h-screen w-screen justify-start items-center flex relative">
@@ -77,7 +78,8 @@ function WhoWeAre() {
             </p>
             <p className="who-text-line-2 text-center absolute w-[90%] text-wrap  ">
               We&apos;re a strategic freelance web development agency for people
-              trying to reach the (almost) impossible.
+              trying to reach the{" "}
+              <span className="text-cyan-300">(almost)</span> impossible.
             </p>
           </div>
         </div>
