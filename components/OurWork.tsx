@@ -245,10 +245,10 @@ function OurWork() {
             onClick={() => {
               router.push("/bloodfinder");
             }}
-            className="hor-div smTablet:px-16 phone:px-10 pt-6 pb-10 flex flex-col justify-start items-center phone:w-[100vw] smTablet:w-[80vw] smTablet:max-w-[50rem] smLaptop:max-w-[40rem] smTablet:h-fit smLaptop:max-h-fit smLaptop:h-fit phone:h-full rounded-xl bg-[#EBFBD9] bg-clip-padding  border border-gray-100/20">
+            className="hor-div smTablet:px-16 phone:px-10 pt-6 pb-10 flex flex-col justify-start items-center phone:w-[100vw] smTablet:w-[80vw] smTablet:max-w-[50rem] smLaptop:max-w-[40rem] smTablet:h-fit smLaptop:max-h-fit smLaptop:h-fit laptop:max-h-full phone:h-full rounded-xl bg-[#EBFBD9] bg-clip-padding  border border-gray-100/20">
             <div className="cursor-pointer">
               <div className="w-full flex justify-between items-center">
-                <p className="anim text-black font-warsaw text-[min(10vh,10vw)] ">
+                <p className="anim text-black font-warsaw smLaptop:text-[min(10vh,10vw)] laptop:whitespace-nowrap">
                   Blood Finder
                 </p>
                 <ArrowUpRight className="text-black smTablet:w-[7rem] phone:w-[2rem] h-auto" />
