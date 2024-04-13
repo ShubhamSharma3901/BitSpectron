@@ -4,6 +4,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import localFont from "next/font/local";
 import { Toaster } from "@/components/ui/sonner";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({ subsets: ["greek"] });
 const roboto = Barlow_Condensed({
@@ -43,6 +44,7 @@ export default function RootLayout({
       <body className={warsaw.variable}>
         {children}
         <Toaster richColors />
+        <SpeedInsights />
       </body>
     </html>
   );
