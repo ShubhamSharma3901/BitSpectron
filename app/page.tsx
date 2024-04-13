@@ -442,7 +442,7 @@ export default function Home() {
       {/* Menu Container */}
       <div
         id={"menu-container"}
-        className="menu-container fixed top-0 h-full w-full bg-transparent backdrop-blur-xl text-white z-[100]"
+        className="menu-container fixed top-0 h-full w-full bg-transparent backdrop-blur-xl text-white z-[200]"
         style={{ opacity: 0, display: "none" }}>
         <div className="menu-wrapper w-full h-full flex justify-center items-center">
           <div className="menu-content text-center flex flex-col font-warsaw justify-items-center text-[min(10vh,10vw)]">
@@ -458,7 +458,7 @@ export default function Home() {
               <span className="menu-text">Home</span>
             </Link>
             <Link
-              href={"#who-we-are"}
+              href={"#pricing"}
               onClick={() => {
                 onMenuClose();
               }}
@@ -466,7 +466,7 @@ export default function Home() {
               style={{
                 opacity: 0,
               }}>
-              <span className="menu-text">About</span>
+              <span className="menu-text">Pricing</span>
             </Link>
             <Link
               href={"#contact-form-div"}

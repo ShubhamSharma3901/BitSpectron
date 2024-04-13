@@ -7,7 +7,9 @@ function Pricing() {
   return (
     <div className="text-white h-fit w-screen relative flex flex-col justify-center items-center mb-10 mt-0 py-[10vh] gap-20">
       <div className="smLaptop:h-[27rem] smLaptop:w-[27rem] smTablet:w-[18rem] smTablet:h-[18rem] rounded-[95%] bg-cyan-600 absolute blur-[300px] translate-x-[-50%] translate-y-[-50%] left-[50%] top-[50%]"></div>
-      <div className="font-warsaw phone:text-[min(12vh,12vw)] smTablet:text-[5rem] h-[30%] flex  flex-col justify-center items-center">
+      <div
+        id={"pricing"}
+        className="font-warsaw phone:text-[min(12vh,12vw)] smTablet:text-[5rem] h-[30%] flex  flex-col justify-center items-center">
         <div className="flex flex-col justify-center items-center text-center">
           <p> Pricing</p>
           <p className="w-full phone:text-[min(3.2vh,3.5vw)] smTablet:text-[min(2.3vh,2.3vw)] smLaptop:text-[min(2.7vh,3.2vw)] font-poppins">

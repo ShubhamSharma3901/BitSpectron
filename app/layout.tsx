@@ -25,7 +25,10 @@ const warsaw = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "BitSpectron",
+  title: {
+    default: "BitSpectron",
+    template: "%s | BitSpectron",
+  },
   description:
     "We&apos;re a strategic freelance web development agency for people trying to reach the (almost) impossible",
 };

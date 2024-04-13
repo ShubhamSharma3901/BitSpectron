@@ -3,6 +3,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import React, { useRef } from "react";
 import SplitType from "split-type";
+import Lottie from "lottie-react";
+import scrollLottie from "../public/assets/ScrollLottie.json";
 
 function WhoWeAre() {
   gsap.registerPlugin(useGSAP, ScrollTrigger);
@@ -15,7 +17,7 @@ function WhoWeAre() {
           scrub: 1,
           start: "top 20%",
           end: "80% center",
-          //   markers: true,
+          // markers: true,
         },
       });
 
@@ -69,7 +71,7 @@ function WhoWeAre() {
     <div
       ref={containerRef}
       id={"who-we-are"}
-      className="who-text-container h-[200vh] flex justify-start items-start relative ">
+      className="who-text-container h-[200vh] flex justify-start items-start relative">
       <div className="who-text-parent h-full w-full flex justify-start items-start relative">
         <div className="who-text-wrapper h-screen w-screen justify-start items-center flex relative">
           <div className="who-text-content h-full w-full relative  text-white font-warsaw flex flex-col justify-center items-center text-[min(10vw,6vh)] tracking-wide">
@@ -83,6 +85,14 @@ function WhoWeAre() {
             </p>
           </div>
         </div>
+      </div>
+      <div className="absolute text-white top-0 z-[10] w-full flex justify-center items-center">
+        <div className="w-[2rem] mr-4">
+          <Lottie animationData={scrollLottie} loop={true} />
+        </div>
+        <p className="font-poppins text-[min(3vh,3vw)] animate-pulse">
+          Keep Scrolling
+        </p>
       </div>
     </div>
   );
