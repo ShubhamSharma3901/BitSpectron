@@ -510,7 +510,7 @@ export default function Home() {
         <OurWork />
         <Marque />
         <Testimonials />
-        <Pricing />
+        {/* <Pricing /> */}
         <FAQ />
         {/* <BentoGridThirdDemo /> */}
         <ContactUs />
