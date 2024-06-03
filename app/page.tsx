@@ -22,6 +22,7 @@ import { BentoGridThirdDemo } from "@/components/BentoGrid";
 import Lenis from "@studio-freight/lenis";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import OurTeam from "@/components/OurTeam";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 export default function Home() {
@@ -512,7 +513,7 @@ export default function Home() {
         <Testimonials />
         {/* <Pricing /> */}
         <FAQ />
-        {/* <BentoGridThirdDemo /> */}
+        <OurTeam />
         <ContactUs />
         <Footer />
       </div>
